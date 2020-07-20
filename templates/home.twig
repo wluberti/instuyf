@@ -1,0 +1,9 @@
+{{ include('_header.twig') }}
+
+<div class="container">
+    {%- for notification in notifications  -%}
+        {{ notification }}
+    {%- endfor -%}
+</div>
+
+{{ include('_footer.twig') }}
