@@ -1,5 +1,24 @@
 {
+    "name": "spuyt/instuyf",
+    "description": "Enrolment system for Volleybalvereniging de Spuyt",
+    "config": {
+        "sort-packages": true
+    },
     "require": {
-        "twig/twig": "^3.0"
+        "php": "^7.3",
+        "twig/twig": "^3.0",
+        "symfony/routing": "^5.1"
+    },
+    "scripts": {
+        "phpunit": "php vendor/bin/phpunit -c phpunit.xml --colors=always",
+        "security-checker": "php vendor/bin/security-checker security:check || true",
+        "test": [
+            "@security-checker",
+            "@phpunit"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.2",
+        "sensiolabs/security-checker": "^6.0"
     }
 }

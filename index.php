@@ -1,17 +1,10 @@
 <?php declare(strict_types=1);
 
-require_once 'vendor/autoload.php';
-$templateDir = 'templates/';
+$notifications = [];
 
-$loader = new \Twig\Loader\FilesystemLoader($templateDir);
-$twig = new \Twig\Environment($loader, [
-    // 'cache' => 'var/cache',
-]);
+require_once 'src/bootstrap.php';
 
-$displayPage = 'home.twig';
-$notifications[] = 'hoi';
-
-$template = $twig->load($displayPage);
+$template = $twig->load('home.twig');
 echo $template->render([
     'notifications' => $notifications,
 ]);

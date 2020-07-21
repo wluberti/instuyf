@@ -3,10 +3,11 @@ version: '3.5'
 services:
   website:
     build:
-      context: '.'
+      context: './build/apache/.'
       args:
         uid: ${UID}
     container_name: insuyf_apache
+    restart: unless-stopped
     environment:
       - APACHE_RUN_USER=#${UID}
       - APACHE_RUN_GROUP=#${UID}
@@ -14,3 +15,26 @@ services:
       - .:/var/www/html
     ports:
       - 8000:80
+    links:
+      - db
+
+  db:
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: insuyf_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - spuyt-mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  spuyt-mysql-data:
+    external: true
+
+networks:
+  default:
+    external:
+      name: spuyt
