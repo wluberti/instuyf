@@ -9,7 +9,7 @@ $twig = new Environment(new FilesystemLoader('templates/'));
 
 
 try {
-    $dbconn = new PDO("mysql:host=127.0.0.1;dbname=instuyf", 'root', 'example');
+    $dbconn = new PDO("mysql:host=instuyf_mysql;dbname=instuyf", 'root', 'example');
     $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $notifications[] = "Connected successfully";
 } catch(PDOException $e) {

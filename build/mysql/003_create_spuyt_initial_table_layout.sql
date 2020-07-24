@@ -1,3 +1,5 @@
+USE instuyf;
+
 CREATE TABLE IF NOT EXISTS instuyf_users
 (
     id          int(11)     NOT NULL auto_increment,

@@ -6,8 +6,9 @@
     },
     "require": {
         "php": "^7.3",
-        "twig/twig": "^3.0",
-        "symfony/routing": "^5.1"
+        "ext-PDO": "^7.4",
+        "symfony/routing": "^5.1",
+        "twig/twig": "^3.0"
     },
     "scripts": {
         "phpunit": "php vendor/bin/phpunit -c phpunit.xml --colors=always",

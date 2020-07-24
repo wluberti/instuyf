@@ -6,7 +6,7 @@ services:
       context: './build/apache/.'
       args:
         uid: ${UID}
-    container_name: insuyf_apache
+    container_name: instuyf_apache
     restart: unless-stopped
     environment:
       - APACHE_RUN_USER=#${UID}
@@ -21,18 +21,16 @@ services:
   db:
     image: mysql:5.6
     command: --default-authentication-plugin=mysql_native_password
-    container_name: insuyf_mysql
+    container_name: instuyf_mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_HOST: instuyf_mysql
     volumes:
-      - spuyt-mysql-data:/var/lib/mysql
+      - ./spuyt-mysql-data:/var/lib/mysql
+      - ./build/mysql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
-
-volumes:
-  spuyt-mysql-data:
-    external: true
 
 networks:
   default:
